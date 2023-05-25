@@ -7,7 +7,7 @@ gabriella Mosquera for academice use -- </p>
 
 - Date Create: 24th May 2023
 - Last Modification: 24th May 2023
-- Git URL: https://github.com/Panktivpatel/tutorial-1/tree/main
+- Git URL: https://git.cs.dal.ca/radhey/csci-4177-5709-grp-19/-/tree/pankti
 
 <h1> Deployment </h1>
 
