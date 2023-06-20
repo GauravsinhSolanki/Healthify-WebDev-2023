@@ -9,6 +9,7 @@ import "./App.css";
 import Registration from "./Registration";
 import Profile from "./Profile";
 import FAQPage from "./FAQ";
+import ContactUsPage from "./ContactUs";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>  
           <Route path="/" element={<Navigate to="/faq" />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/contactUs" element={<ContactUsPage />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
