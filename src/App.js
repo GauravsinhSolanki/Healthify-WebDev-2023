@@ -1,10 +1,5 @@
-// import logo from './logo.svg';
 import './App.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Write from './pages/Write';
@@ -12,71 +7,29 @@ import Home from './pages/Home';
 import Single from './pages/Single';
 import Blog from './pages/Blog';
 import Footer from './components/Footer';
-import NavBar from './components/Navbar'
-import "./style.css"
+import NavBar from './components/Navbar';
+import "./App.css";
 
-const Layout = () =>{
+const App = () => {
   return (
-    <>
-    <NavBar/>
-    <Outlet/>
-    <Footer/>
-    </>
-  );
-  };
-  
-  
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout/>,
-    children:[
-      {
-        path:"/",
-        element:<Home/>
-      },
-      {
-        path:"/home",
-        element:<Home/>
-      },
-      {
-        path:"/single",
-        element:<Single/>
-      },
-      {
-        path:"/blog",
-        element:<Blog/>
-      },
-      {
-        path:"/write",
-        element:<Write/>
-      }
-    ]
-
-  },
-  {
-    path: "/register",
-    element: <Register></Register>,
-  },
-  {
-    path: "/login",
-    element: <Login/>,
-  }
-  
-]);
-
-
-
-function App() {
-  return (
-    <div className='app'>
-      <div className='container'>
-          <RouterProvider router={router}/>
+    <Router>
+      <div className='app'>
+        <NavBar/>
+        <div className='container'>
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/single" element={<Single />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/write" element={<Write />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;

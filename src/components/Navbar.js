@@ -1,36 +1,53 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Logo from '../img/healthyCompany.jpg'
+import React from "react";
+import { Link } from "react-router-dom";
+import icon from "../img/healthyCompany.jpg";
 
 const Navbar = () => {
   return (
-      <div className='navbar'>
-          <div className='container'>
-              <div className='logo'><img src={Logo} alt=''/></div>
-              <div className='links'>
-                    <Link className='link' to="/">
-                        <h6>Home</h6>
-                    </Link>
-                    <Link className='link' to="/?cat=hospital">
-                        <h6>Hospital</h6>
-                    </Link>
-                    <Link className='link' to="/?cat=doctors">
-                        <h6>Doctors</h6>
-                    </Link>
-                    <Link className='link' to="/blog">
-                        <h6>Blogs</h6>
-                    </Link>
+    <nav className="navbar">
+        <div>
+            <img src={icon}></img>
+        </div>
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/doctors" className="nav-link">
+            Doctors
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/patients" className="nav-link">
+            Patients
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/hospitals" className="nav-link">
+            Hospitals
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/blog" className="nav-link">
+            Blog
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/about" className="nav-link">
+            About Us
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/FAQ" className="nav-link">
+            FAQ
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
-                    <span className='write'>
-                        <Link className='link' to='/write'>Write</Link>
-                    </span>
+export default Navbar;
 
-                    <span><Link to="/login" >Logout</Link></span>
-
-              </div>
-          </div>
-      </div>
-  )
-}
-
-export default Navbar
