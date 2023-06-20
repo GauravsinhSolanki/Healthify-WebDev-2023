@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,50 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-form label {
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="password"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-form button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-.error {
-  color:red;
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: center;
-}
+} */
