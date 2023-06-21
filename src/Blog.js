@@ -4,7 +4,7 @@ import './style.css'
 const Blog = () => {
     const navigate = useNavigate();
     const handleRead = () => {
-     navigate('/single'); 
+     navigate("/single"); 
     }
     const posts = [
     {

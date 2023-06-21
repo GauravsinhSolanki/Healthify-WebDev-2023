@@ -3,21 +3,17 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 import "./App.css";
-import Registration from "./Registration";
 import Profile from "./Profile";
-import FAQPage from "./FAQ";
-<<<<<<< HEAD
-import Home from "./Home";
 import Navbar from "./Components/Navbar";
-import Blog from './Blog';
-import './style.css';
-=======
-import ContactUsPage from "./ContactUs";
->>>>>>> c5d974f8f22f065c54f9e186e3e324f0f0815d9c
+import ContactUs from "./ContactUs";
+import Home from "./Home";
+import Blog from "./Blog";
+import Single from "./Single";
 
+import FAQPage from "./FAQ";
 function App() {
   return (
     <Router>
@@ -26,9 +22,10 @@ function App() {
         <Routes>  
           <Route path="/" element={<Home/>} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/contactUs" element={<ContactUsPage />} />
+          <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/blog" element={<Blog/>}/>
+          <Route path="/single" element={<Single/>}/>
         </Routes>
       </div>
     </Router>
