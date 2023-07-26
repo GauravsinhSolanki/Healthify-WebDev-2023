@@ -6,7 +6,7 @@ import {
     sendPasswordResetEmail
 } from 'firebase/auth';
 import {auth} from '../../config/Firebase';
-import Navbar from "./header";
+import Navbar from "../header";
 import {useNavigate} from "react-router-dom";
 
 

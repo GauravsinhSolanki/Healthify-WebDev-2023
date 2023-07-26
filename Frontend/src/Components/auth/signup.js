@@ -4,7 +4,8 @@ import {Container, Typography, TextField, Button, MenuItem, FormControl, Select,
 import {useSpring, animated} from 'react-spring';
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
-import Navbar from "./header";
+import Navbar from "../header";
+import backendUrl from "../../config/Constants";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -134,7 +135,7 @@ const SignupPage = () => {
         if (!Object.values(errors).some((error) => error)) {
             try {
                 // Perform signup logic here and send a POST request to the API
-                await axios.post('http://localhost:9000/auth/signup', {
+                await axios.post(`${backendUrl}/auth/signup`, {
                     firstName,
                     lastName,
                     email,

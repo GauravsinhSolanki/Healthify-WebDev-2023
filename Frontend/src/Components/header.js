@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles} from '@mui/styles';
-import {Button, AppBar, Toolbar, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import {makeStyles} from '@mui/styles';
+import {Button, AppBar, Toolbar, Typography} from '@mui/material';
+import {NavLink} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     navbar: {
@@ -33,7 +33,9 @@ const Navbar = () => {
         <AppBar position="static" className={classes.navbar}>
             <Toolbar>
                 <Typography variant="h6" className={classes.title}>
-                    Healthify
+                    <NavLink to="/" className={classes.navItem} activeClassName="active">
+                        Healthify
+                    </NavLink>
                 </Typography>
                 <NavLink to="/signup" className={classes.navItem} activeClassName="active">
                     Sign Up
@@ -47,7 +49,7 @@ const Navbar = () => {
                 <NavLink to="/blog" className={classes.navItem} activeClassName="active">
                     Blog
                 </NavLink>
-                <NavLink to="/contact" className={classes.navItem} activeClassName="active">
+                <NavLink to="/contactUs" className={classes.navItem} activeClassName="active">
                     Contact Us
                 </NavLink>
             </Toolbar>

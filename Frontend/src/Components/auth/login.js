@@ -3,8 +3,10 @@ import { makeStyles } from '@mui/styles';
 import { Container, Typography, TextField, Button, Link } from '@mui/material';
 import { useSpring, animated } from 'react-spring';
 import axios from 'axios';
-import Navbar from "./header";
+import Navbar from "../header";
 import {useNavigate} from "react-router-dom";
+import backendUrl from "../../config/Constants";
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -72,7 +74,7 @@ const LoginPage = () => {
 
     try {
       // Perform login logic here and send a POST request to the API
-      const response = await axios.post('http://localhost:9000/auth/login', {
+      const response = await axios.post(`${backendUrl}/auth/login`, {
         email,
         password,
       });
