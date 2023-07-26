@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import icon from "./navbar.png"
+import icon from "./navbar.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-        <div>
-            <img src={icon}></img>
-        </div>
+      <div>
+        <img src={icon} alt="Navbar Icon"></img>
+      </div>
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link to="/" className="nav-link">
