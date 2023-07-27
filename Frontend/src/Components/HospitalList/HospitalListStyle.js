@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.div`
-  margin-top: 130px;
+  margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

@@ -9,6 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import { HospitalRepo } from "../../Repo/Hospitals";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../header";
 
 const HospitalList = () => {
   const [hospitals, setHospitals] = useState([]);
@@ -27,6 +28,7 @@ const HospitalList = () => {
 
   return (
     <>
+    <Navbar/>
       {!hospitals.length ? (
         <div
           style={{

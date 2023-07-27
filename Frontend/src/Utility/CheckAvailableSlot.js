@@ -1,9 +1,10 @@
 import axios from "axios";
+import backendUrl from "../../src/config/Constants";
 
 export class CheckAvailableSlot {
   async getAppointments() {
     try {
-      const res = await axios.get("http://localhost:8081/getAppointments");
+      const res = await axios.get(`${backendUrl}/getAppointments`);
       return res.data;
     } catch (err) {
       return err;

@@ -79,7 +79,8 @@ const LoginPage = () => {
         password,
       });
       console.log('Login successful:', response.data);
-      window.alert('Login successful!');
+      // window.alert('Login successful!');
+      navigate("/hospitals");
       // Handle successful login, e.g., redirect to dashboard
     } catch (error) {
       console.error('Error logging in:', error.message);

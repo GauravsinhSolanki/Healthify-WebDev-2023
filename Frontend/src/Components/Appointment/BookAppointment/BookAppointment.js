@@ -8,6 +8,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
+import Navbar from "../../header";
+
 
 const BookAppointment = (props) => {
   const appointmentRepo = new AppointmentRepo();
@@ -55,7 +57,7 @@ const BookAppointment = (props) => {
   };
   return (
     <>
-      <h1>In book appointment !</h1>
+      <h1>Book Your Appointment Here!</h1>
       <SelectDateAndTime>
         <h2 style={{ marginRight: "12px" }}>Select date</h2>
         <DatePicker
@@ -82,7 +84,11 @@ const BookAppointment = (props) => {
           Slot not available please select anotherone !
         </h2>
       )}
-      {isError && <h2 style={{ color: "red" }}>Something went wrong!</h2>}
+      {isError && (
+        <h2 style={{ color: "green" }}>
+          Your Appointment has been booked successfully!
+        </h2>
+      )}
     </>
   );
 };

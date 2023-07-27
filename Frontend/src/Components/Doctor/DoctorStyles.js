@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-  margin-top: 100px;
+  margin-top: 0px;
 `;
 
 export const TabsContainer = styled.div`

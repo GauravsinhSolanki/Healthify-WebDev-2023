@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { DoctorsRepo } from "../../Repo/Doctors";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Navbar from "../header";
 
 const Hospital = (props) => {
   const doctorsRepo = new DoctorsRepo();
@@ -37,6 +38,7 @@ const Hospital = (props) => {
 
   return (
     <>
+    <Navbar/>
       <Name>
         <b>Welcome to, {name} !</b>
       </Name>

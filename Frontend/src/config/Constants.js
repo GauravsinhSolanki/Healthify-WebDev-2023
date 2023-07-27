@@ -1,4 +1,3 @@
-const backendUrl = 'http://localhost:8081';
+const backendUrl = "https://test-366u.onrender.com";
 
 export default backendUrl;
-

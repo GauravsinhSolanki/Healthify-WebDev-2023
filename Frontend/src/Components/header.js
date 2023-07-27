@@ -30,30 +30,61 @@ const Navbar = () => {
     const classes = useStyles();
 
     return (
-        <AppBar position="static" className={classes.navbar}>
-            <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                    <NavLink to="/" className={classes.navItem} activeClassName="active">
-                        Healthify
-                    </NavLink>
-                </Typography>
-                <NavLink to="/signup" className={classes.navItem} activeClassName="active">
-                    Sign Up
-                </NavLink>
-                <NavLink to="/login" className={classes.navItem} activeClassName="active">
-                    Log In
-                </NavLink>
-                <NavLink to="/faq" className={classes.navItem} activeClassName="active">
-                    FAQ
-                </NavLink>
-                <NavLink to="/blog" className={classes.navItem} activeClassName="active">
-                    Blog
-                </NavLink>
-                <NavLink to="/contactUs" className={classes.navItem} activeClassName="active">
-                    Contact Us
-                </NavLink>
-            </Toolbar>
-        </AppBar>
+      <AppBar position="static" className={classes.navbar}>
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            <NavLink
+              to="/"
+              className={classes.navItem}
+              activeClassName="active"
+            >
+              Healthify
+            </NavLink>
+          </Typography>
+          <NavLink
+            to="/signup"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            Sign Up
+          </NavLink>
+          <NavLink
+            to="/login"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            Log In
+          </NavLink>
+          <NavLink
+            to="/hospitals"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            Hospitals
+          </NavLink>
+          <NavLink
+            to="/faq"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            FAQ
+          </NavLink>
+          <NavLink
+            to="/blog"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            to="/contactUs"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            Contact Us
+          </NavLink>
+        </Toolbar>
+      </AppBar>
     );
 };
 
