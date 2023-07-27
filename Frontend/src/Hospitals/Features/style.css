@@ -1,0 +1,34 @@
+.FeaturesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background: #dde6ed;
+}
+
+.FeaturesContainer h4 {
+  margin: 8px;
+  cursor: pointer;
+}
+
+.FeaturesContainer .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.FeaturesContainer .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #dde6ed;
+  border: 2px solid #9db2bf;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.FeaturesContainer .box h1 {
+  color: #ff0000;
+}
