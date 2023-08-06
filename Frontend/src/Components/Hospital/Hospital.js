@@ -6,20 +6,22 @@ import {
   DoctorName,
   Designation,
   Info,
+  Button
 } from "./HospitalStyle";
 import { useEffect, useState } from "react";
 import { DoctorsRepo } from "../../Repo/Doctors";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Navbar from "../header";
 
 const Hospital = (props) => {
   const doctorsRepo = new DoctorsRepo();
   let navigate = useNavigate();
   const location = useLocation();
 
-  // const id = location.state.id;
+  const id = location.state.id;
   const name = location.state.name;
-  // const address = location.state.address;
+  const address = location.state.address;
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
@@ -35,6 +37,7 @@ const Hospital = (props) => {
 
   return (
     <>
+      <Navbar />
       <Name>
         <b>Welcome to, {name} !</b>
       </Name>
@@ -67,7 +70,7 @@ const Hospital = (props) => {
                     {doctor.name} {doctor.name} ({doctor.degree}){" "}
                   </DoctorName>
                   <Designation>{doctor.designation}</Designation>
-                  <button
+                  <Button
                     onClick={() =>
                       navigate("/doctor", {
                         state: {
@@ -84,7 +87,7 @@ const Hospital = (props) => {
                     color=""
                   >
                     Visit
-                  </button>
+                  </Button>
                 </DoctorCard>
               );
             })}

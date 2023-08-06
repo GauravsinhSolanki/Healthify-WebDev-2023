@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { AppointmentRepo } from "../../../Repo/Appointment";
-import { useNavigate } from "react-router-dom";
-
 import {
   ListContainer,
   AppointmentCard,
@@ -11,6 +9,7 @@ import {
   PatientName,
   AppointmentDateAndTime,
   Reshedular,
+  CancelButton,
 } from "./CancelAppointmentStyles";
 
 const CancelAppointment = (props) => {
@@ -20,7 +19,6 @@ const CancelAppointment = (props) => {
   const [cancelClicked, setCancelClicked] = useState(false);
   const [appointmendId, setAppointmentId] = useState("");
   const [success, setSuccess] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -40,7 +38,6 @@ const CancelAppointment = (props) => {
     const res = await appointmentRepo.cancelAppointment(appointmendId);
     if (res === 200) {
       setSuccess(true);
-      navigate(-2);
     }
   };
 
@@ -67,9 +64,9 @@ const CancelAppointment = (props) => {
                   <AppointmentDateAndTime>
                     Time : {appointment.appointmentTime}
                   </AppointmentDateAndTime>
-                  <button onClick={() => onCancelClick(appointment._id)}>
+                  <CancelButton onClick={() => onCancelClick(appointment._id)}>
                     Cancel
-                  </button>
+                  </CancelButton>
                 </AppointmentCard>
               );
             })}
@@ -87,11 +84,14 @@ const CancelAppointment = (props) => {
             </Reshedular>
           )}
           {!success && (
-            <button onClick={() => onConfirmClick()}>Confirm</button>
+            <CancelButton onClick={() => onConfirmClick()}>
+              Confirm
+            </CancelButton>
           )}
         </>
       )}
       {success && (
+        
         <h2 style={{ color: "green" }}>Appointment canceled successfully!</h2>
       )}
     </>

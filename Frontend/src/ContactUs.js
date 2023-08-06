@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ContactUs.css';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/header';
 
 const ContactUs = () => {
   const [name, setName] = useState('');
@@ -24,7 +24,7 @@ const ContactUs = () => {
   return (
     <div>
     <div>
-      <Navbar/>
+      <Navbar></Navbar>
     </div>
     <div className="contact-us-container">
       <h1 className='heading'>CONTACT US</h1>

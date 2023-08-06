@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import BookAppointment from "../Appointment/BookAppointment/BookAppointment";
 import ViewAppointment from "../Appointment/ViewAppointment/ViewAppointment";
 import CancelAppointment from "../Appointment/CancelAppointment/CancelAppointment";
 import ResheduleAppointment from "../Appointment/ResheduleAppointment/ResheduleAppointment";
 import { Main, TabsContainer, Tab } from "./DoctorStyles";
+import Navbar from "../header";
 
 const Doctor = (props) => {
   // let navigate = useNavigate();
@@ -39,6 +40,7 @@ const Doctor = (props) => {
   return (
     <>
       <Main>
+        <Navbar />
         <TabsContainer>
           {tabs.map((tab) => (
             <Tab

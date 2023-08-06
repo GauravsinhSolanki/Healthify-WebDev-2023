@@ -11,12 +11,15 @@ import {
   AppointmentDateAndTime,
   Reshedular,
   SelectDateAndTime,
+  RescheduleButton,
+  Button
 } from "./ResheduleAppointmentStyles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
+// import { Button } from "@mui/material";
 
 const ResheduleAppointment = (props) => {
   console.log("props===>", props);
@@ -95,9 +98,11 @@ const ResheduleAppointment = (props) => {
                       <AppointmentDateAndTime>
                         Time : {appointment.appointmentTime}
                       </AppointmentDateAndTime>
-                      <button onClick={() => onReshedule(appointment._id)}>
+                      <RescheduleButton
+                        onClick={() => onReshedule(appointment._id)}
+                      >
                         Reschedule
-                      </button>
+                      </RescheduleButton>
                     </AppointmentCard>
                   );
                 })}
@@ -119,15 +124,17 @@ const ResheduleAppointment = (props) => {
                   />
                 </SelectDateAndTime>
                 <SelectDateAndTime>
-                  <h2 style={{ marginRight: "12px" }}>Select time</h2>
+                  <h2 style={{ marginRight: "12px", marginTop: "10px" }}>
+                    Select time
+                  </h2>
                   <TimePicker onChange={onChange} value={time} />
                 </SelectDateAndTime>
-              </Reshedular>
               {!success && (
-                <button onClick={() => confirmAppointmment()}>
+                <Button  onClick={() => confirmAppointmment()}>
                   Confirm appointment
-                </button>
+                </Button>
               )}
+              </Reshedular>
             </>
           )}
           {success && (

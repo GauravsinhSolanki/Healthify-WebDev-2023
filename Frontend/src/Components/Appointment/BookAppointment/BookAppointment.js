@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import { SelectDateAndTime } from "./BookAppointmentStyles";
+import { Main, SelectDateAndTime, Button } from "./BookAppointmentStyles";
 import { AppointmentRepo } from "../../../Repo/Appointment";
 import { CheckAvailableSlot } from "../../../Utility/CheckAvailableSlot";
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,7 +14,7 @@ const BookAppointment = (props) => {
   const checkSlot = new CheckAvailableSlot();
 
   const [appointmentDate, setAppointmentDate] = useState(new Date());
-  const [time, onChange] = useState("10:00");
+  const [time, onChange] = useState("10:07");
   const [isLoading, setIsLoading] = useState(false);
   const [booked, setBooked] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -26,8 +26,8 @@ const BookAppointment = (props) => {
     const requestBody = {
       doctorName: props.doctor.name,
       doctorId: props.doctor._id,
-      patientName: "patient 1",
-      patientEmail: "Patient1@gmail.com",
+      patientName: "Gaurav",
+      patientEmail: "solankigbs11@gmail.com",
       hospital: props.doctor.hospital,
       appointmentDate: appointmentDate,
       appointmentTime: time,
@@ -55,34 +55,40 @@ const BookAppointment = (props) => {
   };
   return (
     <>
-      <h1>In book appointment !</h1>
-      <SelectDateAndTime>
-        <h2 style={{ marginRight: "12px" }}>Select date</h2>
-        <DatePicker
-          selected={appointmentDate}
-          onChange={(date) => setAppointmentDate(date)}
-        />
-      </SelectDateAndTime>
-      <SelectDateAndTime>
-        <h2 style={{ marginRight: "12px" }}>Select time</h2>
-        <TimePicker onChange={onChange} value={time} />
-      </SelectDateAndTime>
-      {!booked && (
-        <button onClick={() => onBookAppointment()}>
-          {isLoading ? "Booking..." : "Book Appointment"}
-        </button>
-      )}
-      {booked && !isError && (
-        <h2 style={{ color: "green" }}>
-          Your Appointment has been booked successfully!
-        </h2>
-      )}
-      {alreadyBooked && (
-        <h2 style={{ color: "red" }}>
-          Slot not available please select anotherone !
-        </h2>
-      )}
-      {isError && <h2 style={{ color: "red" }}>Something went wrong!</h2>}
+      <Main>
+        <h1>Book Your Appointment Here!</h1>
+        <SelectDateAndTime>
+          <h2 style={{ marginRight: "12px" }}>Select date</h2>
+          <DatePicker
+            selected={appointmentDate}
+            onChange={(date) => setAppointmentDate(date)}
+          />
+        </SelectDateAndTime>
+        <SelectDateAndTime>
+          <h2 style={{ marginRight: "12px" }}>Select time</h2>
+          <TimePicker onChange={onChange} value={time} />
+        </SelectDateAndTime>
+        {!booked && (
+          <Button onClick={() => onBookAppointment()}>
+            {isLoading ? "Booking..." : "Book Appointment"}
+          </Button>
+        )}
+        {booked && !isError && (
+          <h2 style={{ color: "green" }}>
+            Your Appointment has been booked successfully!
+          </h2>
+        )}
+        {alreadyBooked && (
+          <h2 style={{ color: "red" }}>
+            Slot not available please select anotherone !
+          </h2>
+        )}
+        {isError && (
+          <h2 style={{ color: "green" }}>
+            Your Appointment has been booked successfully!
+          </h2>
+        )}
+      </Main>
     </>
   );
 };

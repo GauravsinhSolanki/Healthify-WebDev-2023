@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './style.css'
+import Navbar from "./Components/header";
 const Blog = () => {
     const navigate = useNavigate();
     const handleRead = () => {
@@ -35,6 +36,7 @@ const Blog = () => {
 
   return (
     <div className='blogs'>
+        <Navbar></Navbar>
         <div className='posts'>
             {posts.map(post=>(
                 <div className='post' key={post.id}>

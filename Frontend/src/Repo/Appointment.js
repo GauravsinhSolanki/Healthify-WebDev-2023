@@ -1,9 +1,10 @@
 import axios from "axios";
+import backendUrl from "../Components/config/Constants";
 
 export class AppointmentRepo {
   async getAppointments() {
     try {
-      const res = await axios.get("http://localhost:8081/getAppointments");
+      const res = await axios.get(`${backendUrl}/getAppointments`);
       return res.data;
     } catch (err) {
       return err;
@@ -12,10 +13,7 @@ export class AppointmentRepo {
 
   async addAppointment(requestBody) {
     try {
-      const res = await axios.post(
-        "http://localhost:8081/addAppointment",
-        requestBody
-      );
+      const res = await axios.post(`${backendUrl}/addAppointment`, requestBody);
       return res.status;
     } catch (err) {
       return err;
@@ -29,7 +27,7 @@ export class AppointmentRepo {
     };
     try {
       const res = await axios.put(
-        `http://localhost:8081/updateAppointment/${requestBody.appointmentId}`,
+        `${backendUrl}/updateAppointment/${requestBody.appointmentId}`,
         body
       );
       return res.status;
@@ -42,7 +40,7 @@ export class AppointmentRepo {
     const body = {};
     try {
       const res = await axios.post(
-        `http://localhost:8081/cancelAppointment/${id}`,
+        `${backendUrl}/cancelAppointment/${id}`,
         body
       );
       console.log("res", res);
