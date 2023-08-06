@@ -4,7 +4,11 @@ import {
   HospitalCard,
   Name,
   Address,
+<<<<<<< HEAD
   ButtonConntainer,
+=======
+  Button,
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 } from "./HospitalListStyle";
 import { useEffect, useState } from "react";
 import { HospitalRepo } from "../../Repo/Hospitals";
@@ -28,7 +32,11 @@ const HospitalList = () => {
 
   return (
     <>
+<<<<<<< HEAD
     <Navbar/>
+=======
+      <Navbar />
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
       {!hospitals.length ? (
         <div
           style={{
@@ -54,7 +62,11 @@ const HospitalList = () => {
                 <HospitalCard key={key}>
                   <Name>{hospital.name}</Name>
                   <Address>{hospital.address}</Address>
+<<<<<<< HEAD
                   <button
+=======
+                  <Button
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
                     onClick={() =>
                       navigate("/hospital", {
                         state: {
@@ -73,7 +85,11 @@ const HospitalList = () => {
                     color=""
                   >
                     View
+<<<<<<< HEAD
                   </button>
+=======
+                  </Button>
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
                 </HospitalCard>
               );
             })}

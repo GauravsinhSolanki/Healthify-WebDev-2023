@@ -9,6 +9,10 @@ import {
   PatientName,
   AppointmentDateAndTime,
   Reshedular,
+<<<<<<< HEAD
+=======
+  CancelButton,
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 } from "./CancelAppointmentStyles";
 
 const CancelAppointment = (props) => {
@@ -63,9 +67,15 @@ const CancelAppointment = (props) => {
                   <AppointmentDateAndTime>
                     Time : {appointment.appointmentTime}
                   </AppointmentDateAndTime>
+<<<<<<< HEAD
                   <button onClick={() => onCancelClick(appointment._id)}>
                     Cancel
                   </button>
+=======
+                  <CancelButton onClick={() => onCancelClick(appointment._id)}>
+                    Cancel
+                  </CancelButton>
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
                 </AppointmentCard>
               );
             })}
@@ -83,11 +93,21 @@ const CancelAppointment = (props) => {
             </Reshedular>
           )}
           {!success && (
+<<<<<<< HEAD
             <button onClick={() => onConfirmClick()}>Confirm</button>
+=======
+            <CancelButton onClick={() => onConfirmClick()}>
+              Confirm
+            </CancelButton>
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
           )}
         </>
       )}
       {success && (
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
         <h2 style={{ color: "green" }}>Appointment canceled successfully!</h2>
       )}
     </>

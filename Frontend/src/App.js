@@ -4,7 +4,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import SignupPage from './Components/auth/signup';
 import theme from './Components/auth/theme';
 import LoginPage from "./Components/auth/login";
+<<<<<<< HEAD
 import {Password} from '@mui/icons-material';
+=======
+// import {Password} from '@mui/icons-material';
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 import PasswordRecoveryPage from './Components/auth/password-recovery';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./Home";

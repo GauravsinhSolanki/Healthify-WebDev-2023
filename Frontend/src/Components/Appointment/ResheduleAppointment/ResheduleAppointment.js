@@ -11,12 +11,21 @@ import {
   AppointmentDateAndTime,
   Reshedular,
   SelectDateAndTime,
+<<<<<<< HEAD
+=======
+  RescheduleButton,
+  Button
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 } from "./ResheduleAppointmentStyles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
+<<<<<<< HEAD
+=======
+// import { Button } from "@mui/material";
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 
 const ResheduleAppointment = (props) => {
   console.log("props===>", props);
@@ -95,9 +104,17 @@ const ResheduleAppointment = (props) => {
                       <AppointmentDateAndTime>
                         Time : {appointment.appointmentTime}
                       </AppointmentDateAndTime>
+<<<<<<< HEAD
                       <button onClick={() => onReshedule(appointment._id)}>
                         Reschedule
                       </button>
+=======
+                      <RescheduleButton
+                        onClick={() => onReshedule(appointment._id)}
+                      >
+                        Reschedule
+                      </RescheduleButton>
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
                     </AppointmentCard>
                   );
                 })}
@@ -119,6 +136,7 @@ const ResheduleAppointment = (props) => {
                   />
                 </SelectDateAndTime>
                 <SelectDateAndTime>
+<<<<<<< HEAD
                   <h2 style={{ marginRight: "12px" }}>Select time</h2>
                   <TimePicker onChange={onChange} value={time} />
                 </SelectDateAndTime>
@@ -128,6 +146,19 @@ const ResheduleAppointment = (props) => {
                   Confirm appointment
                 </button>
               )}
+=======
+                  <h2 style={{ marginRight: "12px", marginTop: "10px" }}>
+                    Select time
+                  </h2>
+                  <TimePicker onChange={onChange} value={time} />
+                </SelectDateAndTime>
+              {!success && (
+                <Button  onClick={() => confirmAppointmment()}>
+                  Confirm appointment
+                </Button>
+              )}
+              </Reshedular>
+>>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
             </>
           )}
           {success && (
