@@ -14,10 +14,7 @@ router.put("/updateAppointment/:id", appointmentController.updateAppointment.bin
 
 router.post("/cancelAppointment/:id", appointmentController.cancelAppointment.bind(appointmentController));
 
-<<<<<<< HEAD
-=======
 router.post("/sendEmail", appointmentController.sendEmail.bind(appointmentController));
 
 
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 module.exports = router;

@@ -40,8 +40,6 @@ class AppointmentController {
             res.status(500).json({error: error.message})
         }
     }
-<<<<<<< HEAD
-=======
 
     async sendEmail(req,res){
         try {
@@ -51,7 +49,6 @@ class AppointmentController {
           res.status(500).json({ error: error.message });
         }
     }
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 }
 
 module.exports = new AppointmentController();
