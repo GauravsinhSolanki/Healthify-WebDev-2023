@@ -41,10 +41,12 @@ class AuthServices {
 
             // Creating express jwt token
             const token = await generateToken(userCredentials.user.uid, user.email);
-
+            const db = await connect();
+            // Fetch the user information from MongoDB
+            const result = await db.collection('users').findOne({_id: userCredentials.user.uid});
             return {
-                uid: userCredentials.user.uid,
                 token: token,
+                user: result
             };
         } catch (error) {
             throw error;

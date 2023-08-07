@@ -1,6 +1,6 @@
 import React from "react";
 import Features from "../Features/Features";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/header";
 import "./style.css";
 const AppointmentHome = () => {
   return (
