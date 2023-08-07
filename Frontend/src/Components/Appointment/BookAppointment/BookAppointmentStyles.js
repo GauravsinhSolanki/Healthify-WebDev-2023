@@ -1,30 +1,14 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-<<<<<<< HEAD
-  margin-top: 80px;
-  display: flex;
-=======
   margin-top: 8px;
   display: flex;
   flex-direction: column;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
   justify-content: center;
   align-items: center;
   padding: 16px;
 `;
 
-<<<<<<< HEAD
-export const SelectDateAndTime = styled.div`
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const SelectTime = styled.div`
-=======
 export const Heading = styled.h1`
   font-size: 36px;
   font-weight: bold;
@@ -33,14 +17,11 @@ export const Heading = styled.h1`
 `;
 
 const StyledSelect = styled.div`
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
   padding: 12px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-=======
   background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -90,5 +71,4 @@ export const ErrorMessage = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@mui/styles';
-import {Button, AppBar, Toolbar, Typography} from '@mui/material';
+import { AppBar, Toolbar, Typography} from '@mui/material';
 import {NavLink} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({

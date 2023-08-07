@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.div`
-<<<<<<< HEAD
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  flex-direction: row;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-=======
   margin-top: 13px;
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +12,6 @@ export const ListContainer = styled.div`
   @media screen and (max-width: 768px) {
     justify-content: center;
   }
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 `;
 
 export const HospitalCard = styled.div`
@@ -31,22 +19,6 @@ export const HospitalCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
-  min-height: 130px;
-  width: 30%;
-  overflow: hidden;
-  border: 1px solid #5902ec;
-  border-radius: 4px;
-  background-color: #ede4ff;
-  padding: 4px;
-`;
-
-export const Name = styled.div``;
-export const Address = styled.div``;
-
-export const ButtonConntainer = styled.div`
-  display: flex;
-=======
   height: 100%; /* Set the height to 100% to ensure all cards have the same height */
   width: 300px; /* Set a fixed width for consistent size */
   overflow: hidden;
@@ -104,5 +76,4 @@ export const Button = styled.button`
   &:focus {
     outline: none;
   }
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 `;

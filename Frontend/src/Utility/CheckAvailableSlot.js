@@ -1,9 +1,5 @@
 import axios from "axios";
-<<<<<<< HEAD
-import backendUrl from "../../src/config/Constants";
-=======
 import backendUrl from "../Components/config/Constants";
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 
 export class CheckAvailableSlot {
   async getAppointments() {
@@ -15,8 +11,6 @@ export class CheckAvailableSlot {
     }
   }
 
-<<<<<<< HEAD
-=======
   add30Minutes(timeString) {
     const [hours, minutes] = timeString.split(":").map(Number);
 
@@ -50,7 +44,6 @@ export class CheckAvailableSlot {
       }
     }
   }
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
   async checkSlotAvailable(doctorId, appointmentDate, time) {
     const appointments = await this.getAppointments();
     const filteredAppointments = appointments.filter(
@@ -73,13 +66,6 @@ export class CheckAvailableSlot {
         comparisionSplitted[1] +
         comparisionSplitted[2] +
         comparisionSplitted[3];
-<<<<<<< HEAD
-      if (
-        appointmentDateString === comparisionString &&
-        time === appointment.appointmentTime
-      ) {
-        console.log("catched");
-=======
 
       const adjustTime = this.add30Minutes(appointment.appointmentTime);
       console.log("testing tieme", adjustTime);
@@ -87,7 +73,6 @@ export class CheckAvailableSlot {
       console.log("compare time", compareTime);
       if (appointmentDateString === comparisionString && compareTime !== 1) {
         console.log("catched", time, appointment.appointmentTime);
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
         canBook = false;
       }
     });

@@ -5,11 +5,7 @@ import {useSpring, animated} from 'react-spring';
 import {
     sendPasswordResetEmail
 } from 'firebase/auth';
-<<<<<<< HEAD
-import {auth} from '../../config/Firebase';
-=======
 import {auth} from '../config/Firebase';
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 import Navbar from "../header";
 import {useNavigate} from "react-router-dom";
 

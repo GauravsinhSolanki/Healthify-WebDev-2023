@@ -5,10 +5,6 @@ export const ListContainer = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   flex-direction: row;
-<<<<<<< HEAD
-  flex-flow: row wrap;
-=======
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
   justify-content: space-between;
   align-items: center;
   padding: 16px;
@@ -21,18 +17,6 @@ export const AppointmentCard = styled.div`
   align-items: center;
   min-height: 130px;
   width: 30%;
-<<<<<<< HEAD
-  border: 1px solid #5902ec;
-  border-radius: 4px;
-  background-color: #ede4ff;
-  padding: 4px;
-`;
-
-export const HospitalName = styled.div``;
-export const DoctorName = styled.div``;
-export const PatientName = styled.div``;
-export const AppointmentDateAndTime = styled.div``;
-=======
   border: 1px solid #91c8e4;
   border-radius: 4px;
   background-color: #f6f4eb;
@@ -66,7 +50,6 @@ export const AppointmentDateAndTime = styled.div`
   color: #777;
   margin-bottom: 8px;
 `;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 
 export const Reshedular = styled.div`
   display: flex;
@@ -78,15 +61,6 @@ export const Picker = styled.div`
   margin-top: 16px;
 `;
 
-<<<<<<< HEAD
-export const SelectDateAndTime = styled.div`
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-=======
 // export const SelectDateAndTime = styled.div`
 //   padding: 12px;
 //   display: flex;
@@ -103,4 +77,3 @@ export const SelectDateAndTime = styled.div`
 //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 //   }
 // `;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b

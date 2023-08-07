@@ -9,11 +9,7 @@ import { Main, TabsContainer, Tab } from "./DoctorStyles";
 import Navbar from "../header";
 
 const Doctor = (props) => {
-<<<<<<< HEAD
-  let navigate = useNavigate();
-=======
   // let navigate = useNavigate();
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
   const location = useLocation();
 
   const [activeTab, setActiveTab] = useState("Book Appointment");

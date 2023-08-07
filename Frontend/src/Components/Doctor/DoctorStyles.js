@@ -1,16 +1,6 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-<<<<<<< HEAD
-  margin-top: 0px;
-`;
-
-export const TabsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-=======
   margin-top: 0;
 `;
 
@@ -28,16 +18,12 @@ export const TabsContainer = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 `;
 
 export const Tab = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  padding: 8px;
-=======
   padding: 12px 24px;
   font-size: 18px;
   font-weight: bold;
@@ -59,5 +45,4 @@ export const Tab = styled.div`
     margin-top: 12px;
     font-size: 16px;
   }
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 `;

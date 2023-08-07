@@ -1,27 +1,16 @@
 import styled from "styled-components";
 
 export const Name = styled.div`
-<<<<<<< HEAD
-  margin-top: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-`;
-
-export const Info = styled.div`
-=======
   margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight:bolder;
-  font-size:larger;
+  font-weight: bolder;
+  font-size: larger;
   padding: 16px;
-  `;
-  
-  export const Info = styled.div`
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
+`;
+
+export const Info = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,16 +21,6 @@ export const DoctorListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-<<<<<<< HEAD
-  flex-direction: row;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-`;
-
-export const DoctorCard = styled.div`
-=======
   justify-content: center;
   align-items: flex-start;
   padding: 16px;
@@ -53,27 +32,10 @@ export const DoctorCard = styled.div`
 
 export const DoctorCard = styled.div`
   flex: 1 1 300px;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
-  min-height: 130px;
-  width: 30%;
-  overflow: hidden;
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 4px;
-`;
-
-export const DoctorName = styled.div``;
-export const HospitalName = styled.div``;
-export const Designation = styled.div``;
-export const ButtonConntainer = styled.div`
-  display: flex;
-`;
-=======
   min-height: 200px;
   overflow: hidden;
   border: 1px solid #ddd;
@@ -129,4 +91,3 @@ export const Button = styled.button`
     outline: none;
   }
 `;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b

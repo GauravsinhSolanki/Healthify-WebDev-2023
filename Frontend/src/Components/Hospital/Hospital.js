@@ -4,16 +4,9 @@ import {
   DoctorListContainer,
   DoctorCard,
   DoctorName,
-<<<<<<< HEAD
-  HospitalName,
-  ButtonConntainer,
-  Designation,
-  Info,
-=======
   Designation,
   Info,
   Button
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
 } from "./HospitalStyle";
 import { useEffect, useState } from "react";
 import { DoctorsRepo } from "../../Repo/Doctors";
@@ -27,8 +20,10 @@ const Hospital = (props) => {
   const location = useLocation();
 
   const id = location.state.id;
+  console.log(id);
   const name = location.state.name;
   const address = location.state.address;
+  console.log(address);
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
@@ -44,11 +39,7 @@ const Hospital = (props) => {
 
   return (
     <>
-<<<<<<< HEAD
-    <Navbar/>
-=======
       <Navbar />
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
       <Name>
         <b>Welcome to, {name} !</b>
       </Name>
@@ -81,11 +72,7 @@ const Hospital = (props) => {
                     {doctor.name} {doctor.name} ({doctor.degree}){" "}
                   </DoctorName>
                   <Designation>{doctor.designation}</Designation>
-<<<<<<< HEAD
-                  <button
-=======
                   <Button
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
                     onClick={() =>
                       navigate("/doctor", {
                         state: {
@@ -102,11 +89,7 @@ const Hospital = (props) => {
                     color=""
                   >
                     Visit
-<<<<<<< HEAD
-                  </button>
-=======
                   </Button>
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b
                 </DoctorCard>
               );
             })}
