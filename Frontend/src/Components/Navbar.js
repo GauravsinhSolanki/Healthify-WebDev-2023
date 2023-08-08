@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import icon from "./navbar.png";
@@ -32,6 +31,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/Patient" className="nav-link">
+            Patient
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/ContactUs" className="nav-link">
             Contact Us
           </Link>
@@ -47,7 +51,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-=======
 // import React from "react";
 // import { Link } from "react-router-dom";
 // import icon from "./navbar.png";
@@ -96,4 +99,3 @@ export default Navbar;
 // };
 
 // export default Navbar;
->>>>>>> 37bf82399b42c56052e768feb3df751163c75e4b

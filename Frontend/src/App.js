@@ -17,6 +17,7 @@ import Doctor from "./Components/Doctor/Doctor";
 import Profile from "./Profile";
 import Blog from "./Blog";
 import Single from "./Single";
+import Patient from "./Patient";
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/blog" element={<Blog />} />
                         <Route path="/single" element={<Single />} />
+                        <Route path="/patient" element={<Patient />} />
                     </Routes>
                 </ThemeProvider>
         </BrowserRouter>

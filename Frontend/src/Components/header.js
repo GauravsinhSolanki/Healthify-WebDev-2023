@@ -63,6 +63,13 @@ const Navbar = () => {
             Hospitals
           </NavLink>
           <NavLink
+            to="/patient"
+            className={classes.navItem}
+            activeClassName="active"
+          >
+            Patient
+          </NavLink>
+          <NavLink
             to="/faq"
             className={classes.navItem}
             activeClassName="active"
