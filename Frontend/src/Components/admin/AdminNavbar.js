@@ -60,7 +60,7 @@ const AdminNavbar = () => {
                 >
                     Register Hospital
                 </NavLink>
-                <NavLink to="/login" onClick={() => {navigate('/login')}} className={classes.navItem} activeClassName="active">
+                <NavLink to="/login" onClick={() => {sessionStorage.clear(); navigate('/login')}} className={classes.navItem} activeClassName="active">
                     Logout
                 </NavLink>
             </Toolbar>

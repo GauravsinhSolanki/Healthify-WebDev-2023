@@ -51,7 +51,7 @@ const Navbar = () => {
     };
 
     const handleLogout = () => {
-        sessionStorage.removeItem('token');
+        sessionStorage.clear();
         handleProfileMenuClose();
         navigate('/login');
     };
