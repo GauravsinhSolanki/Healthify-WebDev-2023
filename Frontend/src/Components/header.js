@@ -103,6 +103,9 @@ const Navbar = () => {
                             <LocalHospitalIcon className={classes.icon} />
                             Hospitals
                         </NavLink>
+                        <NavLink to="/patient" className={classes.navItem} activeClassName="active">
+                            Patient
+                        </NavLink>
                         <NavLink onClick={navigateToPrescriptions} className={classes.navItem} activeClassName="active">
                             <LocalPharmacyIcon className={classes.icon} />
                             Prescriptions

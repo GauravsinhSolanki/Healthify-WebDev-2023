@@ -18,8 +18,10 @@ const Hospital = (props) => {
   const location = useLocation();
 
   const id = location.state.id;
+  console.log(id);
   const name = location.state.name;
   const address = location.state.address;
+  console.log(address);
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [search, setSearch] = useState("");

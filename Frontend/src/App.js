@@ -27,6 +27,7 @@ import NotAuthorized from "./Components/admin/NotAuthorized";
 import SignupPage from './Components/auth/signup';
 import LoginPage from "./Components/auth/login";
 import PasswordRecoveryPage from './Components/auth/password-recovery';
+import Patient from "./Patient";
 
 function App() {
     return (
@@ -56,6 +57,7 @@ function App() {
                     <Route path="/doctor/prescribe" element={<ProtectedRoutes><Prescribe /></ProtectedRoutes>} />
                     <Route path="/doctor/prescriptions" element={<ProtectedRoutes><DoctorPrescriptions /></ProtectedRoutes>} />
                     <Route path="/patient/prescriptions" element={<ProtectedRoutes><PatientPrescriptions /></ProtectedRoutes>} />
+                    <Route path="/patient" element={<ProtectedRoutes><Patient /></ProtectedRoutes>} />
                     <Route path="/not-authorized" element={<NotAuthorized />} />
                 </Routes>
             </ThemeProvider>
