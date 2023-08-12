@@ -96,6 +96,9 @@ const Navbar = () => {
                             <LoginIcon className={classes.icon} />
                             Log In
                         </NavLink>
+                        <NavLink to="/article-list" className={classes.navItem} activeClassName="active">
+                            Blog
+                        </NavLink>
                     </>
                 ) : (
                     <>

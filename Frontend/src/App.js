@@ -28,6 +28,11 @@ import SignupPage from './Components/auth/signup';
 import LoginPage from "./Components/auth/login";
 import PasswordRecoveryPage from './Components/auth/password-recovery';
 import Patient from "./Patient";
+import ArticleList from "./Articles/ArticleList";
+import ArticleDetails from "./Articles/ArticleDetails";
+import NewArticle from "./Articles/NewArticle";
+import EditArticle from "./Articles/EditArticle";
+import DeleteConfirmation from "./Articles/DeleteConfirmation";
 
 function App() {
     return (
@@ -59,6 +64,11 @@ function App() {
                     <Route path="/patient/prescriptions" element={<ProtectedRoutes><PatientPrescriptions /></ProtectedRoutes>} />
                     <Route path="/patient" element={<ProtectedRoutes><Patient /></ProtectedRoutes>} />
                     <Route path="/not-authorized" element={<NotAuthorized />} />
+                    <Route path="/articles/delete/:id" element={<DeleteConfirmation/>} />
+                    <Route path="/articles/edit/:id" element={<EditArticle/>} />
+                    <Route path="/articles/new" element={<NewArticle/>} />
+                    <Route path="/articles/:id" element={<ArticleDetails/>} />
+                    <Route path="/article-list" element={<ArticleList/>} />
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>
