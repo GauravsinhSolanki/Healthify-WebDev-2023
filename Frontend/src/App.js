@@ -64,11 +64,12 @@ function App() {
                     <Route path="/patient/prescriptions" element={<ProtectedRoutes><PatientPrescriptions /></ProtectedRoutes>} />
                     <Route path="/patient" element={<ProtectedRoutes><Patient /></ProtectedRoutes>} />
                     <Route path="/not-authorized" element={<NotAuthorized />} />
-                    <Route path="/articles/delete/:id" element={<DeleteConfirmation/>} />
-                    <Route path="/articles/edit/:id" element={<EditArticle/>} />
-                    <Route path="/articles/new" element={<NewArticle/>} />
-                    <Route path="/articles/:id" element={<ArticleDetails/>} />
-                    <Route path="/article-list" element={<ArticleList/>} />
+                    <Route path="/articles/delete/:id" element={<ProtectedRoutes><DeleteConfirmation/></ProtectedRoutes>} />
+                    <Route path="/articles/edit/:id" element={<ProtectedRoutes><EditArticle/></ProtectedRoutes>} />
+                    <Route path="/articles/new" element={<ProtectedRoutes><NewArticle/></ProtectedRoutes>} />
+                    <Route path="/articles/:id" element={<ProtectedRoutes><ArticleDetails/></ProtectedRoutes>} />
+                    <Route path="/article-list" element={<ProtectedRoutes><ArticleList/></ProtectedRoutes>} />
+
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>

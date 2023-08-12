@@ -36,7 +36,6 @@ const Blog = () => {
 
   return (
     <div className='blogs'>
-        <Navbar></Navbar>
         <div className='posts'>
             {posts.map(post=>(
                 <div className='post' key={post.id}>

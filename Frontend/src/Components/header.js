@@ -96,9 +96,6 @@ const Navbar = () => {
                             <LoginIcon className={classes.icon} />
                             Log In
                         </NavLink>
-                        <NavLink to="/article-list" className={classes.navItem} activeClassName="active">
-                            Blog
-                        </NavLink>
                     </>
                 ) : (
                     <>
@@ -117,7 +114,7 @@ const Navbar = () => {
                             <HelpIcon className={classes.icon} />
                             FAQ
                         </NavLink>
-                        <NavLink to="/blog" className={classes.navItem} activeClassName="active">
+                        <NavLink to="/article-list" className={classes.navItem} activeClassName="active">
                             <DescriptionIcon className={classes.icon} />
                             Blog
                         </NavLink>

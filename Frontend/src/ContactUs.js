@@ -24,7 +24,6 @@ const ContactUs = () => {
   return (
     <div>
     <div>
-      <Navbar></Navbar>
     </div>
     <div className="contact-us-container">
       <h1 className='heading'>CONTACT US</h1>

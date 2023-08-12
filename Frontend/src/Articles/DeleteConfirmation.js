@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { CircularProgress, Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import Navbar from "../Components/header";
 
 function DeleteConfirmation({ match }) {
   const { id } = useParams();
@@ -13,10 +14,13 @@ function DeleteConfirmation({ match }) {
   }, [id]);
 
   return (
+      <div>
+          <Navbar />
     <Container>
       <CircularProgress />
       <p>Deleting...</p>
     </Container>
+      </div>
   );
 }
 
