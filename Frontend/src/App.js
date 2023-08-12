@@ -18,6 +18,11 @@ import Profile from "./Profile";
 import Blog from "./Blog";
 import Single from "./Single";
 import Patient from "./Patient";
+import ArticleList from "./Articles/ArticleList";
+import ArticleDetails from "./Articles/ArticleDetails";
+import NewArticle from "./Articles/NewArticle";
+import EditArticle from "./Articles/EditArticle";
+import DeleteConfirmation from "./Articles/DeleteConfirmation";
 
 function App() {
     return (
@@ -39,6 +44,11 @@ function App() {
                         <Route path="/blog" element={<Blog />} />
                         <Route path="/single" element={<Single />} />
                         <Route path="/patient" element={<Patient />} />
+                        <Route path="/article-list" element={<ArticleList/>} />
+                        <Route path="/articles/:id" element={<ArticleDetails/>} />
+                        <Route path="/articles/new" element={<NewArticle/>} />
+                        <Route path="/articles/edit/:id" element={<EditArticle/>} />
+                        <Route path="/articles/delete/:id" element={<DeleteConfirmation/>} />
                     </Routes>
                 </ThemeProvider>
         </BrowserRouter>

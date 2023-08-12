@@ -77,7 +77,7 @@ const Navbar = () => {
             FAQ
           </NavLink>
           <NavLink
-            to="/blog"
+            to="/article-list"
             className={classes.navItem}
             activeClassName="active"
           >
