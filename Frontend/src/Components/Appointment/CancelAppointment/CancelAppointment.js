@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppointmentRepo } from "../../../Repo/Appointment";
 import {
   ListContainer,
@@ -38,6 +37,10 @@ const CancelAppointment = (props) => {
     const res = await appointmentRepo.cancelAppointment(appointmendId);
     if (res === 200) {
       setSuccess(true);
+      // Refresh the page after 2 seconds (2000 milliseconds)
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
   };
 
@@ -52,7 +55,7 @@ const CancelAppointment = (props) => {
           <ListContainer>
             {appointments.map((appointment) => {
               return (
-                <AppointmentCard>
+                <AppointmentCard key={appointment._id}>
                   <HospitalName>Hospital : {appointment.hospital}</HospitalName>
                   <DoctorName>Doctor : {appointment.doctorName}</DoctorName>
                   <PatientName>
@@ -91,7 +94,6 @@ const CancelAppointment = (props) => {
         </>
       )}
       {success && (
-        
         <h2 style={{ color: "green" }}>Appointment canceled successfully!</h2>
       )}
     </>

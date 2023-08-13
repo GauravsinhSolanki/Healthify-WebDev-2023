@@ -1,0 +1,97 @@
+.Main-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #91C8E4;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 50px;
+    max-width: 900px;
+    margin-left: 15%;
+  
+  }
+  
+  .contactUsContainer {
+    width: 80%;
+    max-width: 600px;
+    padding: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f5f5f5;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .formRow {
+    display: flex;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  
+  .formColumn {
+    flex: 1;
+    padding: 0 1rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .heading {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #007bff;
+  }
+
+  label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .btn {
+    padding: 14px 28px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #007bff;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
