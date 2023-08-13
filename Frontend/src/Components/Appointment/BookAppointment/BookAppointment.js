@@ -8,26 +8,44 @@ import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
+import axios from "axios";
+import backendUrl from "../../config/Constants";
 
 const BookAppointment = (props) => {
   const appointmentRepo = new AppointmentRepo();
   const checkSlot = new CheckAvailableSlot();
-
+  const user = JSON.parse(localStorage.getItem("user"));
   const [appointmentDate, setAppointmentDate] = useState(new Date());
   const [time, onChange] = useState("10:07");
   const [isLoading, setIsLoading] = useState(false);
   const [booked, setBooked] = useState(false);
   const [isError, setIsError] = useState(false);
   const [alreadyBooked, setAlreadyBooked] = useState(false);
+  const sendEmail = async () => {
+    try {
+      const response = await axios.post(`${backendUrl}/sendEmail`, {
+        doctorName: props.doctor.name,
+        patientName: `${user.firstName} ${user.lastName}`,
+        patientEmail: user.email,
+        hospital: props.doctor.hospital,
+        appointmentDate,
+        appointmentTime: time,
+      });
+      console.log("Email sent:", response.data);
+    } catch (error) {
+      console.error("Error sending email:", error.message);
+    }
+  };
 
   const onBookAppointment = async () => {
     console.log("adate", appointmentDate);
     setIsLoading(true);
+
     const requestBody = {
       doctorName: props.doctor.name,
       doctorId: props.doctor._id,
-      patientName: "Gaurav",
-      patientEmail: "solankigbs11@gmail.com",
+      patientName: user.firstName + " " + user.lastName,
+      patientEmail: user.email,
       hospital: props.doctor.hospital,
       appointmentDate: appointmentDate,
       appointmentTime: time,
@@ -41,8 +59,11 @@ const BookAppointment = (props) => {
     if (canBook) {
       setAlreadyBooked(false);
       const response = await appointmentRepo.addAppointment(requestBody);
-      if (response === 200) {
+      console.log(response);
+      if (response === 201) {
         setIsLoading(false);
+        await sendEmail();
+        console.log(sendEmail);
         setBooked(true);
       } else {
         setIsLoading(false);

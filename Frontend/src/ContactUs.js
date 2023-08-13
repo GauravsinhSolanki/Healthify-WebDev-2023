@@ -1,67 +1,79 @@
-import React, { useState } from 'react';
-import './ContactUs.css';
-import Navbar from './Components/header';
+import React, { useState } from "react";
+import styles from "./ContactUs.css";
+import Navbar from "./Components/header";
 
 const ContactUs = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const { name, email, message } = formData;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform any necessary actions with the form data
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Message:', message);
-
-    // Clear the form inputs
-    setName('');
-    setEmail('');
-    setMessage('');
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
     <div>
-    <div>
-      <Navbar></Navbar>
-    </div>
-    <div className="contact-us-container">
-      <h1 className='heading'>CONTACT US</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+      <Navbar />
+      <div className="Main-Container">
+        <div className={styles.contactUsContainer}>
+          <h2 className={styles.heading}>Stay Connected With Us</h2>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
+              <label htmlFor="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={name}
+                onChange={handleChange}
+                required
+                placeholder="Your Name"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+                required
+                placeholder="Your Email"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                value={message}
+                onChange={handleChange}
+                required
+                placeholder="Your Message"
+              />
+            </div>
+            <button className={styles.btn} type="submit">
+              Submit
+            </button>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <input
-          type='text'
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-          ></input>
-        </div>
-        <button className='btn' type="submit">Submit</button>
-      </form>
-    </div>
+      </div>
     </div>
   );
 };
