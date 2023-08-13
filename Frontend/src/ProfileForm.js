@@ -8,57 +8,57 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export const TextFieldCustom = ({
-    variant,
-    type = "text",
-    value,
-    placeholder,
-    onChange,
-    name,
-    required = false,
-    style,
+  variant,
+  type = "text",
+  value,
+  placeholder,
+  onChange,
+  name,
+  required = false,
+  style,
 }) => {
-    return (
-        <TextField
-            id="outlined-select"
-            variant={variant}
-            fullWidth
-            required={required}
-            name={name}
-            value={value}
-            onChange={onChange}
-            type={type}
-            sx={{
-                ...style,
-                "& input::placeholder": {
-                    fontSize: "16px",
-                },
-            }}
-            inputProps={{
-                style: {
-                    padding: "10px",
-                    height: "35px",
-                },
-            }}
-            placeholder={placeholder}
-        />
-    );
+  return (
+    <TextField
+      id="outlined-select"
+      variant={variant}
+      fullWidth
+      required={required}
+      name={name}
+      value={value}
+      onChange={onChange}
+      type={type}
+      sx={{
+        ...style,
+        "& input::placeholder": {
+          fontSize: "16px",
+        },
+      }}
+      inputProps={{
+        style: {
+          padding: "10px",
+          height: "35px",
+        },
+      }}
+      placeholder={placeholder}
+    />
+  );
 };
 
 export const Header = styled("div")({
-    fontSize: "16px",
-    fontWeight: "bold",
-    marginBottom: "4px",
-    color: "#000",
-    // marginTop: "15px",
+  fontSize: "16px",
+  fontWeight: "bold",
+  marginBottom: "4px",
+  color: "#000",
+  // marginTop: "15px",
 });
 
 export const SubHeader = ({ title, isRequired }) => {
-    return (
-        <Box style={{ display: "flex" }}>
-            <Header>{title}</Header>
-            {isRequired && <span style={{ color: "red" }}>*</span>}
-        </Box>
-    );
+  return (
+    <Box style={{ display: "flex" }}>
+      <Header>{title}</Header>
+      {isRequired && <span style={{ color: "red" }}>*</span>}
+    </Box>
+  );
 };
 
 const ProfileForm = () => {
@@ -81,7 +81,7 @@ const ProfileForm = () => {
   const [address, setAddress] = React.useState("");
   const [city, setCity] = React.useState("");
   const [gender, setGender] = React.useState("Male");
-  const [choiceOfHospitality, setChoiceOfHospitality] = React.useState("UMH");
+  const [choiceOfHospitality, setChoiceOfHospitality] = React.useState("");
   const [error, setError] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [firstnameError, setFirstnameError] = React.useState(false);
@@ -94,6 +94,8 @@ const ProfileForm = () => {
   const [choiceOfHospitalityError, setChoiceOfHospitalityError] = React.useState(false);
   const [data, setData] = useState(null);
   const [patientData, setPatientData] = useState(null);
+  const [hospitalityOptions, setHospitalityOptions] = useState([]);
+
 
   useEffect(() => {
     if (data) {
@@ -104,9 +106,21 @@ const ProfileForm = () => {
       setAddress(data.address || "");
       setCity(data.city || "");
       setGender(data.gender || "Male");
-      setChoiceOfHospitality(data.choiceOfHospitality || "UMH");
+      setChoiceOfHospitality(data.choiceOfHospitality || "");
     }
   }, [data]);
+
+  useEffect(() => {
+    axios.get('https://latest-backend-1hy7.onrender.com/')
+      .then(response => {
+        // Assuming the API response data is an array of options
+        console.log("responseGETHOSPITALS", response.data);
+        setHospitalityOptions(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching hospitality options:', error);
+      });
+  }, []);
 
   useEffect(() => {
     if (user1) {
@@ -116,7 +130,7 @@ const ProfileForm = () => {
           const patientData = response.data.body;
 
           console.log("patientData", patientData);
-          if (!data) { 
+          if (!data) {
             setPatientData(patientData);
             setData(patientData);
             setOriginalData(patientData);
@@ -137,7 +151,7 @@ const ProfileForm = () => {
       setAddress(data.address || "");
       setCity(data.city || "");
       setGender(data.gender || "Male");
-      setChoiceOfHospitality(data.choiceOfHospitality || "UMH");
+      setChoiceOfHospitality(data.choiceOfHospitality || "");
     }
   }, [data]);
 
@@ -151,11 +165,45 @@ const ProfileForm = () => {
     setAddress(originalData.address || "");
     setCity(originalData.city || "");
     setGender(originalData.gender || "Male");
-    setChoiceOfHospitality(originalData.choiceOfHospitality || "UMH");
+    setChoiceOfHospitality(originalData.choiceOfHospitality || "");
     setError(false);
     setIsSubmitted(false);
   };
-  
+
+  const handleReset = async () => {
+    if (user1) {
+      try {
+        await axios.delete(`https://backend-webdev.onrender.com/deletePatient/${user1._id}`);
+        toast.success('Patient data reset successfully', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setTimeout(() => {
+          resetForm(); // Call the resetForm function to update the state
+          // Auto-refresh after resetting
+          window.location.reload();
+        }, 0);
+      } catch (error) {
+        toast.error('Error resetting patient data', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.error('Error resetting patient data:', error);
+      }
+    }
+  };
+
+
   const handleSubmit = async () => {
     if (firstName === "") {
       setFirstnameError(true);
@@ -210,18 +258,18 @@ const ProfileForm = () => {
     } else {
       try {
         const response = await axios.post('https://backend-webdev.onrender.com/createPatient', {
-            userId: user1._id,
-            firstName,
-            lastName,
-            email,
-            phoneNo,
-            address,
-            city,
-            gender,
-            choiceOfHospitality,
+          userId: user1._id,
+          firstName,
+          lastName,
+          email,
+          phoneNo,
+          address,
+          city,
+          gender,
+          choiceOfHospitality,
         });
 
-        
+
         const submittedPatientData = {
           firstName,
           lastName,
@@ -233,7 +281,7 @@ const ProfileForm = () => {
           choiceOfHospitality,
         };
         setData(submittedPatientData);
-        
+
         setIsSubmitted(true);
         console.log("ressponse", response);
         toast.success('Patient created successfully', {
@@ -245,19 +293,21 @@ const ProfileForm = () => {
           draggable: true,
           progress: undefined,
         });
-
-    } catch (error) {
-      const data = error.response.data.body;
-      console.log("data", data);
-      toast.error(error.response?.data?.message || 'An error occurred', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      } catch (error) {
+        const data = error.response.data.body;
+        console.log("data", data);
+        toast.error(error.response?.data?.message || 'An error occurred', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
   };
@@ -526,12 +576,10 @@ const ProfileForm = () => {
         <Grid item xs={12} sm={6}>
           <SubHeader title={"Choice of Hospitality"} isRequired={true} />
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="hospitalName"
+            id="hospitalName"
             label="Choice of Hospitality"
             value={choiceOfHospitality}
-            defaultValue="UMH"
-            placeholder={"Please select your choice of hospitality"}
             fullWidth
             inputProps={{
               style: {
@@ -545,9 +593,11 @@ const ProfileForm = () => {
               setChoiceOfHospitalityError(false);
             }}
           >
-            <MenuItem value={"UMH"}>UMH</MenuItem>
-            <MenuItem value={"UHS"}>UHS</MenuItem>
-            <MenuItem value={"Civil"}>Civil</MenuItem>
+            {hospitalityOptions.map(option => (
+              <MenuItem key={option._id} value={option.name}>
+                {option.name}
+              </MenuItem>
+            ))}
           </Select>
           {choiceOfHospitalityError && (
             <span
@@ -561,8 +611,10 @@ const ProfileForm = () => {
             </span>
           )}
         </Grid>
+
+
         <Grid item xs={12} sm={12}>
-        <Button
+          <Button
             type="submit"
             style={{
               display: "flex",
@@ -584,7 +636,7 @@ const ProfileForm = () => {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={resetForm}
+              onClick={handleReset}
             >
               Reset
             </Button>
