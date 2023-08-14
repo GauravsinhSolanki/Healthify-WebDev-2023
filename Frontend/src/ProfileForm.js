@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import backendUrl from "./Components/config/Constants";
 
 export const TextFieldCustom = ({
   variant,
@@ -65,7 +66,6 @@ const ProfileForm = () => {
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState(null);
   let user1 = JSON.parse(localStorage.getItem("user"));
-  console.log("user1", user1);
   useEffect(() => {
     if (user1 === null) {
       navigate('/login'); // Replace '/login' with the actual login page path
@@ -74,9 +74,9 @@ const ProfileForm = () => {
   }, [user1, navigate]);
 
   // console.log(user1._id, "userId");
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const [firstName, setFirstName] = React.useState(user1.firstName);
+  const [lastName, setLastName] = React.useState(user1.lastName);
+  const [email, setEmail] = React.useState(user1.email);
   const [phoneNo, setPhoneNo] = React.useState("");
   const [address, setAddress] = React.useState("");
   const [city, setCity] = React.useState("");
@@ -173,7 +173,7 @@ const ProfileForm = () => {
   const handleReset = async () => {
     if (user1) {
       try {
-        await axios.delete(`https://backend-webdev.onrender.com/deletePatient/${user1._id}`);
+        await axios.delete(`${backendUrl}/deletePatient/${user1._id}`);
         toast.success('Patient data reset successfully', {
           position: 'top-right',
           autoClose: 5000,
@@ -257,7 +257,7 @@ const ProfileForm = () => {
       setError(true);
     } else {
       try {
-        const response = await axios.post('https://backend-webdev.onrender.com/createPatient', {
+        const response = await axios.post(`${backendUrl}/createPatient`, {
           userId: user1._id,
           firstName,
           lastName,

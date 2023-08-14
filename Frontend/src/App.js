@@ -27,7 +27,7 @@ import NotAuthorized from "./Components/admin/NotAuthorized";
 import SignupPage from './Components/auth/signup';
 import LoginPage from "./Components/auth/login";
 import PasswordRecoveryPage from './Components/auth/password-recovery';
-import Patient from "./Patient";
+import PatientProfile from "./PatientProfile";
 import ArticleList from "./Articles/ArticleList";
 import ArticleDetails from "./Articles/ArticleDetails";
 import NewArticle from "./Articles/NewArticle";
@@ -80,7 +80,6 @@ function App() {
                     <Route path="/doctor/prescribe" element={<ProtectedRoutes><Prescribe /></ProtectedRoutes>} />
                     <Route path="/doctor/prescriptions" element={<ProtectedRoutes><DoctorPrescriptions /></ProtectedRoutes>} />
                     <Route path="/patient/prescriptions" element={<ProtectedRoutes><PatientPrescriptions /></ProtectedRoutes>} />
-                    <Route path="/patient" element={<ProtectedRoutes><Patient /></ProtectedRoutes>} />
                     <Route path="/not-authorized" element={<NotAuthorized />} />
                     <Route path="/articles/delete/:id" element={<ProtectedRoutes><DeleteConfirmation/></ProtectedRoutes>} />
                     <Route path="/articles/edit/:id" element={<ProtectedRoutes><EditArticle/></ProtectedRoutes>} />

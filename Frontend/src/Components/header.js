@@ -1,5 +1,4 @@
 import React from 'react';
-import HelpIcon from '@mui/icons-material/Help';
 import { makeStyles } from '@mui/styles';
 import { AppBar, Toolbar, Typography, Menu, MenuItem, IconButton, Button } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -13,7 +12,7 @@ import LoginIcon from '@mui/icons-material/Login';
 
 const useStyles = makeStyles((theme) => ({
     navbar: {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: "#00ADB5",
     },
     navItem: {
         margin: theme.spacing(0, 1.5),
@@ -116,7 +115,7 @@ const Navbar = () => {
                             <HelpIcon className={classes.icon} />
                             FAQ
                         </NavLink>
-                        <NavLink to="/blog" className={classes.navItem} activeClassName="active">
+                        <NavLink to="/article-list" className={classes.navItem} activeClassName="active">
                             <DescriptionIcon className={classes.icon} />
                             Blog
                         </NavLink>
