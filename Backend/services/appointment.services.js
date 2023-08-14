@@ -64,12 +64,20 @@ class AppointmentServices {
         },
       };
       const transporter = nodemailer.createTransport(emailConfig);
-      const { recipient, subject, message } = req.body;
+      const {
+        doctorName,
+        patientEmail,
+        hospital,
+        appointmentDate,
+        appointmentTime,
+      } = req.body;
       const mailOptions = {
-        from: "radheypatel272@gmail.com",
-        to: recipient,
-        subject: subject,
-        text: message,
+        from: "healtify@gmail.com",
+        to: patientEmail,
+        subject: "Appointment Booked!",
+        text: `Your Appointment has been booked with ${doctorName} at the ${hospital} on ${
+            (appointmentDate.split("T")[0])
+        } at  ${appointmentTime}`,
       };
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {

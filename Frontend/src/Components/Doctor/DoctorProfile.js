@@ -32,7 +32,18 @@ const DoctorProfile = () => {
     useEffect(() => {
         axios.get(`${backendUrl}/getDoctor`, { params : {"userId": user._id}}) // Update the endpoint URL
             .then((response) => {
-                setProfile(response.data);
+                if(response.data === null) {
+                    const profile = {
+                        name: user.firstName + ' ' + user.lastName,
+                        hospital: '',
+                        degree: '',
+                        designation: '',
+                        userId: user._id
+                    }
+                    setProfile(profile);
+                } else {
+                    setProfile(response.data);
+                }
             })
             .catch((error) => {
                 // An error occurred, try to retrieve the profile from local storage
