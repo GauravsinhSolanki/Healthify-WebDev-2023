@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import {AppBar, Toolbar, Typography, Menu, MenuItem, IconButton, Button} from '@mui/material';
-import {NavLink, useNavigate} from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Menu, MenuItem, IconButton, Button } from '@mui/material';
+import { NavLink, useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import HelpIcon from '@mui/icons-material/Help';
@@ -45,6 +45,11 @@ const Navbar = () => {
         setAnchorEl(event.currentTarget);
     };
 
+    const handleLogoutAndRemoveToken = () => {
+        handleLogout();
+        sessionStorage.removeItem('token');
+    };
+
     const handleProfileMenuClose = () => {
         setAnchorEl(null);
     };
@@ -61,7 +66,7 @@ const Navbar = () => {
         if (user.role === 'Doctor') {
             navigate('/doctor-profile');
         } else if (user.role === 'Patient') {
-            navigate('/');
+            navigate('/patientProfile');
         }
 
         handleProfileMenuClose();
@@ -102,10 +107,6 @@ const Navbar = () => {
                             <LocalHospitalIcon className={classes.icon} />
                             Hospitals
                         </NavLink>
-                        <NavLink to="/patientProfile" className={classes.navItem} activeClassName="active">
-                            <LocalHospitalIcon className={classes.icon} />
-                            Patient
-                        </NavLink>
                         <NavLink onClick={navigateToPrescriptions} className={classes.navItem} activeClassName="active">
                             {/* <LocalPharmacyIcon className={classes.icon} /> */}
                             Prescriptions
@@ -131,18 +132,18 @@ const Navbar = () => {
                             onClose={handleProfileMenuClose}
                         >
                             <MenuItem onClick={handleProfileMenuClose}>
-                                <NavLink onClick={handleProfileClick} className={classes.navItem} style={{color: "black"}}>
+                                {/* <NavLink onClick={handleProfileClick} className={classes.navItem} style={{ color: "black" }}>
                                     Profile
-                                </NavLink>
-                                <Button className={classes.navItem} onClick={handleProfileClick} style={{color: "black"}}>
+                                </NavLink> */}
+                                <Button className={classes.navItem} onClick={handleProfileClick} style={{ color: "black" }}>
                                     Profile
                                 </Button>
                             </MenuItem>
                             <MenuItem onClick={handleProfileMenuClose}>
-                                <NavLink onClick={() => {sessionStorage.removeItem('token')}} to="/" className={classes.navItem} style={{color: "black"}}>
+                                {/* <NavLink onClick={() => {sessionStorage.removeItem('token')}} to="/" className={classes.navItem} style={{color: "black"}}>
                                     Logout
-                                </NavLink>
-                                <Button className={classes.navItem} onClick={handleLogout} style={{color: "black"}}>
+                                </NavLink> */}
+                                <Button className={classes.navItem} onClick={handleLogoutAndRemoveToken} style={{ color: "black" }}>
                                     Logout
                                 </Button>
                             </MenuItem>
