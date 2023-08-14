@@ -1,3 +1,5 @@
+// Author: Gauravsinh Bharatsinh Solanki B00932065
+
 const mongoose = require("mongoose");
 
 //field needed for appointment :
@@ -26,7 +28,7 @@ const appointments = new mongoose.Schema({
   },
   appointmentTime: {
     type: String,
-  }
+  },
 });
 
 const doctor = new mongoose.Schema({
@@ -48,11 +50,11 @@ const doctor = new mongoose.Schema({
   },
   appointments: {
     type: [appointments],
-    required: true
+    required: true,
   },
   userId: {
     type: String,
-  }
+  },
 });
 
 module.exports = mongoose.model("Doctor", doctor);

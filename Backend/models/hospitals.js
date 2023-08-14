@@ -1,3 +1,5 @@
+// Author: Gauravsinh Bharatsinh Solanki B00932065
+
 const mongoose = require("mongoose");
 
 const hospital = new mongoose.Schema({

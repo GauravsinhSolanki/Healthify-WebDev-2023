@@ -1,3 +1,5 @@
+// Author: Gauravsinh Bharatsinh Solanki B00932065
+
 import React, { useState } from "react";
 import Navbar from "./Components/header";
 import "./FAQ.css";
@@ -76,8 +78,8 @@ const FAQPage = () => {
   };
 
   return (
-      <div className="faq-container">
-        <Navbar/>
+    <div className="faq-container">
+      <Navbar />
       <h1 className="help-title">Happy to HELP you!</h1>
       <h2 className="faq-title">Frequently Asked Questions</h2>
       <ul className="faq-list">

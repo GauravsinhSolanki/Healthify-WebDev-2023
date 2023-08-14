@@ -1,11 +1,13 @@
+// Author: Gauravsinh Bharatsinh Solanki B00932065
+
 const mongoose = require("mongoose");
 
 //field needed for appointment :
-// doctorName  
+// doctorName
 // doctorId ==> MIPM
 // patientName
 // patientEmail  ==> most IMP
-// hospital 
+// hospital
 // appointmentDate
 // appointmentTime
 

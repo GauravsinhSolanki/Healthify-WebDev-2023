@@ -2,10 +2,20 @@ import axios from "axios";
 import backendUrl from "../Components/config/Constants";
 
 export class AppointmentRepo {
-  async getAppointments() {
+  async getAppointments(email) {
     try {
       const res = await axios.get(`${backendUrl}/getAppointments`);
-      return res.data;
+      const filteredAppointments = res.data.filter(
+        (appointment) => appointment.patientEmail === email
+      );
+      // console.log(
+      //   "res",
+      //   res.data[1].patientEmail === email,
+      //   res.data[1].patientEmail,
+      //   email
+      // );
+
+      return filteredAppointments;
     } catch (err) {
       return err;
     }

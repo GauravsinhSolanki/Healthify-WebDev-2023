@@ -1,3 +1,5 @@
+// Author: Gauravsinh Bharatsinh Solanki B00932065
+
 import styled from "styled-components";
 
 export const ListContainer = styled.div`
@@ -91,4 +93,3 @@ export const ErrorMessage = styled.h2`
   font-weight: bold;
   margin-bottom: 20px;
 `;
-

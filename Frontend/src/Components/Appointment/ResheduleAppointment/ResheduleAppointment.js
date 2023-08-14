@@ -1,3 +1,5 @@
+// Author: Gauravsinh Bharatsinh Solanki B00932065
+
 import React from "react";
 import { useEffect, useState } from "react";
 import { AppointmentRepo } from "../../../Repo/Appointment";
@@ -12,7 +14,7 @@ import {
   Reshedular,
   SelectDateAndTime,
   RescheduleButton,
-  Button
+  Button,
 } from "./ResheduleAppointmentStyles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -23,6 +25,8 @@ import "react-clock/dist/Clock.css";
 
 const ResheduleAppointment = (props) => {
   console.log("props===>", props);
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const appointmentRepo = new AppointmentRepo();
   const checkSlot = new CheckAvailableSlot();
 
@@ -36,7 +40,7 @@ const ResheduleAppointment = (props) => {
 
   useEffect(() => {
     (async () => {
-      const res = await appointmentRepo.getAppointments();
+      const res = await appointmentRepo.getAppointments(user.email);
       if (res.length) {
         setAppointments(res);
       }
@@ -129,11 +133,11 @@ const ResheduleAppointment = (props) => {
                   </h2>
                   <TimePicker onChange={onChange} value={time} />
                 </SelectDateAndTime>
-              {!success && (
-                <Button  onClick={() => confirmAppointmment()}>
-                  Confirm appointment
-                </Button>
-              )}
+                {!success && (
+                  <Button onClick={() => confirmAppointmment()}>
+                    Confirm appointment
+                  </Button>
+                )}
               </Reshedular>
             </>
           )}

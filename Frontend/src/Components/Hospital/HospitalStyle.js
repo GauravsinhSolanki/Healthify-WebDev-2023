@@ -1,3 +1,5 @@
+
+// Author: Gauravsinh Bharatsinh Solanki B00932065
 import styled from "styled-components";
 
 export const Name = styled.div`
