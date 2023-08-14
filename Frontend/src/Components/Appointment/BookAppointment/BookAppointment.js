@@ -40,7 +40,7 @@ const BookAppointment = (props) => {
   const onBookAppointment = async () => {
     console.log("adate", appointmentDate);
     setIsLoading(true);
-
+    const user = JSON.parse(localStorage.getItem("user"));
     const requestBody = {
       doctorName: props.doctor.name,
       doctorId: props.doctor._id,

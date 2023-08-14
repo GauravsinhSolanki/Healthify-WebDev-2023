@@ -73,6 +73,7 @@ const LoginPage = () => {
 
         if (email === "admin" && password === "admin") {
             sessionStorage.setItem("role", "admin");
+            sessionStorage.setItem("token", "admin");
             navigate("/admin");
         } else {
             try {

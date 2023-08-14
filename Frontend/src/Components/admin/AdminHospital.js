@@ -20,7 +20,7 @@ const AdminHospital = () => {
     };
 
     const goToRegisterHospitalPage = () => {
-        navigate("/admin/hospital/register");
+        navigate('/register-hospital');
     };
 
     useEffect(() => {
@@ -34,65 +34,49 @@ const AdminHospital = () => {
     };
 
     return (
-      <>
-          <AdminNavbar />
         <div className="container">
-          <div className="row mt-4">
-            <div className="col text-center">
-              <button
-                className="btn btn-primary btn-lg mb-3"
-                onClick={goToRegisterHospitalPage}
-              >
-                <FaHospital /> Register Hospital {/* Added icon */}
-              </button>
+            <AdminNavbar />
+            <div className="row mt-4">
+                <div className="col text-center">
+                    <button className="btn btn-primary btn-lg mb-3" onClick={goToRegisterHospitalPage}>
+                        <FaHospital /> Register Hospital {/* Added icon */}
+                    </button>
+                </div>
             </div>
-          </div>
 
-          <div className="row mt-4">
-            <div className="col text-center">
-              <h2>All Hospitals</h2>
-              <button
-                className="btn btn-success btn-lg mb-3"
-                onClick={getHospitals}
-              >
-                <FaSync /> Refresh
-              </button>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {hospitals
-                    .slice(
-                      (currentPage - 1) * itemsPerPage,
-                      currentPage * itemsPerPage
-                    )
-                    .map((hospital) => (
-                      <tr key={hospital.id}>
-                        <td>{hospital.name}</td>
-                        <td>{hospital.address}</td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-              <Pagination className="justify-content-center mt-3">
-                {[...Array(totalPages)].map((_, i) => (
-                  <Pagination.Item
-                    key={i}
-                    active={i + 1 === currentPage}
-                    onClick={() => handleClick(i + 1)}
-                  >
-                    {i + 1}
-                  </Pagination.Item>
-                ))}
-              </Pagination>
+
+            <div className="row mt-4">
+                <div className="col text-center">
+                    <h2>All Hospitals</h2>
+                    <button className="btn btn-success btn-lg mb-3" onClick={getHospitals}>
+                        <FaSync /> Refresh
+                    </button>
+                    <table className="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {hospitals.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((hospital) => (
+                            <tr key={hospital.id}>
+                                <td>{hospital.name}</td>
+                                <td>{hospital.address}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                    <Pagination className="justify-content-center mt-3">
+                        {[...Array(totalPages)].map((_, i) => (
+                            <Pagination.Item key={i} active={i + 1 === currentPage} onClick={() => handleClick(i + 1)}>
+                                {i + 1}
+                            </Pagination.Item>
+                        ))}
+                    </Pagination>
+                </div>
             </div>
-          </div>
         </div>
-      </>
     );
 };
 

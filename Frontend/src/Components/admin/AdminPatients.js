@@ -30,58 +30,43 @@ const AdminPatients = () => {
     };
 
     return (
-      <>
-        {" "}
-          <AdminNavbar />
         <div className="container">
+            <AdminNavbar />
 
-          <div className="row mt-4">
-            <div className="col text-center">
-              <h2>All Patients</h2>
-              <button
-                className="btn btn-success btn-lg mb-3"
-                onClick={getPatients}
-              >
-                <FaSync /> Refresh
-              </button>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {patients
-                    .slice(
-                      (currentPage - 1) * itemsPerPage,
-                      currentPage * itemsPerPage
-                    )
-                    .map((patient) => (
-                      <tr key={patient._id}>
-                        <td>{patient._id}</td>
-                        <td>{patient.firstName + " " + patient.lastName}</td>
-                        <td>{patient.email}</td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-              <Pagination className="justify-content-center mt-3">
-                {[...Array(totalPages)].map((_, i) => (
-                  <Pagination.Item
-                    key={i}
-                    active={i + 1 === currentPage}
-                    onClick={() => handleClick(i + 1)}
-                  >
-                    {i + 1}
-                  </Pagination.Item>
-                ))}
-              </Pagination>
+            <div className="row mt-4">
+                <div className="col text-center">
+                    <h2>All Patients</h2>
+                    <button className="btn btn-success btn-lg mb-3" onClick={getPatients}>
+                        <FaSync /> Refresh
+                    </button>
+                    <table className="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {patients.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((patient) => (
+                            <tr key={patient._id}>
+                                <td>{patient._id}</td>
+                                <td>{patient.firstName + " " + patient.lastName}</td>
+                                <td>{patient.email}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                    <Pagination className="justify-content-center mt-3">
+                        {[...Array(totalPages)].map((_, i) => (
+                            <Pagination.Item key={i} active={i + 1 === currentPage} onClick={() => handleClick(i + 1)}>
+                                {i + 1}
+                            </Pagination.Item>
+                        ))}
+                    </Pagination>
+                </div>
             </div>
-          </div>
         </div>
-      </>
     );
 };
 

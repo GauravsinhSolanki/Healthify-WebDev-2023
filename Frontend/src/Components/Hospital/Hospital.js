@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Name,
   DoctorListContainer,
@@ -8,10 +8,8 @@ import {
   Info,
   Button
 } from "./HospitalStyle";
-import { useEffect, useState } from "react";
 import { DoctorsRepo } from "../../Repo/Doctors";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../header";
 
 const Hospital = (props) => {
@@ -23,6 +21,8 @@ const Hospital = (props) => {
   const name = location.state.name;
   const address = location.state.address;
   const [doctors, setDoctors] = useState([]);
+  const [filteredDoctors, setFilteredDoctors] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -31,70 +31,98 @@ const Hospital = (props) => {
 
       if (doctorsArray) {
         setDoctors(doctors);
+        setFilteredDoctors(doctors);
       }
     })();
   }, []);
 
-  return (
-    <>
-      <Navbar />
-      <Name>
-        <b>Welcome to, {name} !</b>
-      </Name>
-      <Info>Please find below list of doctors for Appointment</Info>
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setFilteredDoctors(
+        doctors.filter((doctor) =>
+            doctor.name.toLowerCase().includes(event.target.value.toLowerCase())
+        )
+    );
+  };
 
-      {!doctors.length ? (
+  return (
+      <>
+        <Navbar />
+        <Name>
+          <b>Welcome to, {name} !</b>
+        </Name>
+        <Info>Please find below list of doctors for Appointment</Info>
         <div
-          style={{
-            marginTop: "150px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "10px",
+            }}
         >
-          Loading...
+          <input
+              type="text"
+              placeholder="Search for doctor..."
+              value={search}
+              onChange={handleSearch}
+              style={{
+                height: "30px",
+                width: "50%",
+              }}
+          />
         </div>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <DoctorListContainer>
-            {doctors.map((doctor, key = doctor._id) => {
-              return (
-                <DoctorCard key={key}>
-                  <DoctorName>
-                    {doctor.name} {doctor.name} ({doctor.degree}){" "}
-                  </DoctorName>
-                  <Designation>{doctor.designation}</Designation>
-                  <Button
-                    onClick={() =>
-                      navigate("/doctor", {
-                        state: {
-                          doctor: doctor,
-                        },
-                      })
-                    }
-                    type="button"
-                    style={{
-                      height: "30px",
-                      width: "50%",
-                    }}
-                    placeholder="View"
-                    color=""
-                  >
-                    Visit
-                  </Button>
-                </DoctorCard>
-              );
-            })}
-          </DoctorListContainer>
-        </div>
-      )}
-    </>
+        {!filteredDoctors.length ? (
+            <div
+                style={{
+                  marginTop: "150px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+            >
+              {search ? "No doctors found..." : "Loading..."}
+            </div>
+        ) : (
+            <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+            >
+              <DoctorListContainer>
+                {filteredDoctors.map((doctor, key = doctor._id) => {
+                  return (
+                      <DoctorCard key={key}>
+                        <DoctorName>
+                          {doctor.name} {doctor.name} ({doctor.degree}){" "}
+                        </DoctorName>
+                        <Designation>{doctor.designation}</Designation>
+                        <Button
+                            onClick={() =>
+                                navigate("/doctor", {
+                                  state: {
+                                    doctor: doctor,
+                                  },
+                                })
+                            }
+                            type="button"
+                            style={{
+                              height: "30px",
+                              width: "50%",
+                            }}
+                            placeholder="View"
+                            color=""
+                        >
+                          Visit
+                        </Button>
+                      </DoctorCard>
+                  );
+                })}
+              </DoctorListContainer>
+            </div>
+        )}
+      </>
   );
 };
 

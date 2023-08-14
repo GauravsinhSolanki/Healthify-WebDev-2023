@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ListContainer,
   HospitalCard,
@@ -6,13 +6,14 @@ import {
   Address,
   Button,
 } from "./HospitalListStyle";
-import { useEffect, useState } from "react";
 import { HospitalRepo } from "../../Repo/Hospitals";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../header";
 
 const HospitalList = () => {
   const [hospitals, setHospitals] = useState([]);
+  const [filteredHospitals, setFilteredHospitals] = useState([]);
+  const [search, setSearch] = useState("");
   const hospitalRepo = new HospitalRepo();
   let navigate = useNavigate();
 
@@ -22,65 +23,94 @@ const HospitalList = () => {
 
       if (hospitalsArray) {
         setHospitals(hospitalsArray);
+        setFilteredHospitals(hospitalsArray);
       }
     })();
   }, []);
 
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setFilteredHospitals(
+        hospitals.filter((hospital) =>
+            hospital.name.toLowerCase().includes(event.target.value.toLowerCase())
+        )
+    );
+  };
+
   return (
-    <>
-      <Navbar />
-      {!hospitals.length ? (
+      <>
+        <Navbar />
         <div
-          style={{
-            marginTop: "150px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "10px",
+            }}
         >
-          Loading...
+          <input
+              type="text"
+              placeholder="Search for hospital..."
+              value={search}
+              onChange={handleSearch}
+              style={{
+                height: "30px",
+                width: "50%",
+              }}
+          />
         </div>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <ListContainer>
-            {hospitals.map((hospital, key = hospital._id) => {
-              return (
-                <HospitalCard key={key}>
-                  <Name>{hospital.name}</Name>
-                  <Address>{hospital.address}</Address>
-                  <Button
-                    onClick={() =>
-                      navigate("/hospital", {
-                        state: {
-                          id: hospital._id,
-                          name: hospital.name,
-                          address: hospital.address,
-                        },
-                      })
-                    }
-                    type="button"
-                    style={{
-                      height: "30px",
-                      width: "50%",
-                    }}
-                    placeholder="View"
-                    color=""
-                  >
-                    View
-                  </Button>
-                </HospitalCard>
-              );
-            })}
-          </ListContainer>
-        </div>
-      )}
-    </>
+        {!filteredHospitals.length ? (
+            <div
+                style={{
+                  marginTop: "150px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+            >
+              {search ? "No hospitals found..." : "Loading..."}
+            </div>
+        ) : (
+            <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+            >
+              <ListContainer>
+                {filteredHospitals.map((hospital, key = hospital._id) => {
+                  return (
+                      <HospitalCard key={key}>
+                        <Name>{hospital.name}</Name>
+                        <Address>{hospital.address}</Address>
+                        <Button
+                            onClick={() =>
+                                navigate("/hospital", {
+                                  state: {
+                                    id: hospital._id,
+                                    name: hospital.name,
+                                    address: hospital.address,
+                                  },
+                                })
+                            }
+                            type="button"
+                            style={{
+                              height: "30px",
+                              width: "50%",
+                            }}
+                            placeholder="View"
+                            color=""
+                        >
+                          View
+                        </Button>
+                      </HospitalCard>
+                  );
+                })}
+              </ListContainer>
+            </div>
+        )}
+      </>
   );
 };
 

@@ -26,7 +26,7 @@ const appointments = new mongoose.Schema({
   },
   appointmentTime: {
     type: String,
-  },
+  }
 });
 
 const doctor = new mongoose.Schema({
@@ -50,6 +50,9 @@ const doctor = new mongoose.Schema({
     type: [appointments],
     required: true
   },
+  userId: {
+    type: String,
+  }
 });
 
 module.exports = mongoose.model("Doctor", doctor);

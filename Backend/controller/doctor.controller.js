@@ -21,6 +21,15 @@ class DoctorController {
             res.status(500).json({error: error.message});
         }
     }
+
+    async getDoctor(req, res) {
+        try {
+            const doctor = await doctorServices.getDoctor(req);
+            res.json(doctor);
+        } catch (error) {
+            res.status(500).json({error: error.message});
+        }
+    }
 }
 
 module.exports = new DoctorController();
