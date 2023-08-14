@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import user from "../src/assests/user.png";
-import { Grid, Typography, IconButton, Box } from '@mui/material';
+import { Grid, IconButton, Box, Button } from '@mui/material';
 import { Edit } from '@mui/icons-material';
 import ProfileForm from './ProfileForm';
 import Navbar from './Components/header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,16 +15,53 @@ const PatientProfile = () => {
   console.log("user1", user1);
   useEffect(() => {
     if (user1 === null) {
-      navigate('/login'); // Replace '/login' with the actual login page path
+      navigate('/login');
       return;
     }
   }, [user1, navigate]);
 
   const [profilePicture, setProfilePicture] = useState(user);
 
-  const handleUploadButtonClick = async () => {
-    if (!profilePicture || profilePicture === user) {
-      toast.error('Please upload an image first', {
+  const handleUploadButtonClick = async (e) => {
+    try {
+      const file = e.target.files[0];
+      if (!file) {
+        return;
+      }
+  
+      const formData = new FormData();
+      formData.append('userId', user1._id);
+      formData.append('profilePicture', file);
+      console.log(formData);
+      // Debugging: Display formData content
+      for (let pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+      }
+  
+      const response = await axios.post('https://backend-webdev.onrender.com/uploadProfilePicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          console.log('Upload progress: ' + percentCompleted + '%');
+        },
+      });
+  
+      if (response.status === 200) {
+        setProfilePicture(URL.createObjectURL(file));
+        toast.success('Profile picture uploaded successfully', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (error) {
+      toast.error('Error uploading profile picture', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -34,54 +70,10 @@ const PatientProfile = () => {
         draggable: true,
         progress: undefined,
       });
-    } else {
-      try {
-        const formData = new FormData();
-        formData.append('userId', user1._id);
-        formData.append('profilePicture', profilePicture);
-
-        // Combine the FileReader logic here
-        const file = document.getElementById('profile-picture').files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = async (e) => {
-            setProfilePicture(e.target.result);
-            try {
-              const response = await axios.post('https://backend-webdev.onrender.com/uploadProfilePicture', formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                },
-              });
-              console.log("uploadResponse", response);
-              toast.success('Profile picture uploaded successfully', {
-                position: 'top-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
-            } catch (error) {
-              toast.error('Error uploading profile picture', {
-                position: 'top-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
-              console.error('Error uploading profile picture:', error);
-            }
-          };
-          reader.readAsDataURL(file);
-        }
-      } catch (error) {
-        console.error('Error creating form data:', error);
-      }
+      console.error('Error uploading profile picture:', error);
     }
   };
+  
 
   return (
     <Box height="100vh" display="flex" flexDirection="column">
@@ -119,10 +111,11 @@ const PatientProfile = () => {
                 id="profile-picture"
                 type="file"
                 style={{ display: 'none' }}
-                onChange={handleUploadButtonClick}
+                onChange={handleUploadButtonClick}  
               />
-              <Button variant="contained" color="primary" onClick={handleUploadButtonClick}>
+              <Button variant="contained" color="primary" component="label">
                 Upload Profile Picture
+                <input type="file" hidden accept="image/*" onChange={handleUploadButtonClick} />
               </Button>
             </div>
           </Grid>
