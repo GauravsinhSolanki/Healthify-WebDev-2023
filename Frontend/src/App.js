@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './Components/auth/theme';
@@ -35,6 +35,24 @@ import EditArticle from "./Articles/EditArticle";
 import DeleteConfirmation from "./Articles/DeleteConfirmation";
 
 function App() {
+
+    const [token, setToken] = useState(sessionStorage.getItem('token'));
+
+    // This effect will run every time the session storage changes, keeping the token state up to date
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setToken(sessionStorage.getItem('token'));
+        };
+
+        // Attach the event listener to the window object
+        window.addEventListener('storage', handleStorageChange);
+
+        // Clean up by removing the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
     return (
         <BrowserRouter>
             <ThemeProvider theme={theme}>
@@ -69,6 +87,8 @@ function App() {
                     <Route path="/articles/new" element={<ProtectedRoutes><NewArticle/></ProtectedRoutes>} />
                     <Route path="/articles/:id" element={<ProtectedRoutes><ArticleDetails/></ProtectedRoutes>} />
                     <Route path="/article-list" element={<ProtectedRoutes><ArticleList/></ProtectedRoutes>} />
+                    <Route path="/patientProfile" element={<ProtectedRoutes><PatientProfile /></ProtectedRoutes>}/>
+                    <Route path="/patient/prescriptions" element={<ProtectedRoutes><PatientPrescriptions /></ProtectedRoutes>}/>
 
                 </Routes>
             </ThemeProvider>

@@ -5,12 +5,12 @@ export const Name = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bolder;
-  font-size: larger;
+  font-weight:bolder;
+  font-size:larger;
   padding: 16px;
-`;
-
-export const Info = styled.div`
+  `;
+  
+  export const Info = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
